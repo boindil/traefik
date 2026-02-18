@@ -30,6 +30,8 @@ http:
         idleConnTimeout: "60s"
         readIdleTimeout: "5s"
         pingTimeout: "15s"
+        readTimeout: "60s"
+        writeTimeout: "60s"
       spiffe:
         ids:
           - "spiffe://example.org/id1"
@@ -61,6 +63,8 @@ http:
     idleConnTimeout = "60s"
     readIdleTimeout = "5s"
     pingTimeout = "15s"
+    readTimeout = "60s"
+    writeTimeout = "60s"
 
   [http.serversTransports.mytransport.spiffe]
     ids = ["spiffe://example.org/id1", "spiffe://example.org/id2"]
@@ -119,6 +123,8 @@ labels:
 | <a id="opt-forwardingTimeouts-idleConnTimeout" href="#opt-forwardingTimeouts-idleConnTimeout" title="#opt-forwardingTimeouts-idleConnTimeout">`forwardingTimeouts.idleConnTimeout`</a> | Maximum amount of time an idle (keep-alive) connection will remain idle before closing itself.<br />0 = no timeout                       | 90s     | No       |
 | <a id="opt-forwardingTimeouts-readIdleTimeout" href="#opt-forwardingTimeouts-readIdleTimeout" title="#opt-forwardingTimeouts-readIdleTimeout">`forwardingTimeouts.readIdleTimeout`</a> | Defines the timeout after which a health check using ping frame will be carried out if no frame is received on the HTTP/2 connection.    | 0s      | No       |
 | <a id="opt-forwardingTimeouts-pingTimeout" href="#opt-forwardingTimeouts-pingTimeout" title="#opt-forwardingTimeouts-pingTimeout">`forwardingTimeouts.pingTimeout`</a> | Defines the timeout after which the HTTP/2 connection will be closed if a response to ping is not received.                              | 15s     | No       |
+| <a id="opt-forwardingTimeouts-readTimeout" href="#opt-forwardingTimeouts-readTimeout" title="#opt-forwardingTimeouts-readTimeout">`forwardingTimeouts.readTimeout`</a> | Amount of time between two successive read operations.                             | 60s     | No       |
+| <a id="opt-forwardingTimeouts-writeTimeout" href="#opt-forwardingTimeouts-writeTimeout" title="#opt-forwardingTimeouts-writeTimeout">`forwardingTimeouts.writeTimeout`</a> | Amount of time between two successive write operations.                              | 15s     | No       |
 | <a id="opt-spiffe" href="#opt-spiffe" title="#opt-spiffe">`spiffe`</a> | Defines the SPIFFE configuration. An empty `spiffe` section enables SPIFFE (that allows any SPIFFE ID).                                  |         | No       |
 | <a id="opt-spiffe-ids" href="#opt-spiffe-ids" title="#opt-spiffe-ids">`spiffe.ids`</a> | Defines the allowed SPIFFE IDs.<br />This takes precedence over the SPIFFE TrustDomain.                                                  | []      | No       |
 | <a id="opt-spiffe-trustDomain" href="#opt-spiffe-trustDomain" title="#opt-spiffe-trustDomain">`spiffe.trustDomain`</a> | Defines the SPIFFE trust domain.                                                                                                         | ""      | No       |
